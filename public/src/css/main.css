@@ -1,0 +1,74 @@
+.new-post{
+    padding: 16px 0;
+    border-bottom: solid #c4b2b2;
+}
+.new post header,
+.post header{
+    margin-bottom: 20px;
+}
+.posts .post{
+    padding-left: 10px;
+    border-left: 3px solid #290808;
+    margin-bottom: 20px;
+}
+.posts .post .info{
+    font-style:  italic;
+    color:#aaa;
+}
+
+.user-view{
+    float: right;
+}
+.container{
+    margin: auto;
+}
+.img{
+    height: 240px;
+    width: 240px;
+}
+.profile{
+    height:50px;
+    width: 50px;border-radius: 100px;
+}
+a{
+ color:#290808;
+}
+.list{
+    padding-left: 10px;
+    border-left: 3px solid #290808;
+    margin-bottom: 40px;
+    /* border-bottom: 1px solid black; */
+
+}
+.send-message{
+    position: absolute;
+    
+    
+    margin: auto;
+   
+}
+.sent-view{
+    margin: auto;
+    float: right;
+    text-align: left;
+    background-color: chartreuse;
+    border-radius: 20px;
+
+}
+.pop{
+    position: relative;
+    margin: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+iframe{
+    height: 300px;
+    width: 60%;
+    margin: auto;
+    position: relative;
+
+}
+.chat-con{
+    margin-top: 50px;
+    margin: auto
+}
