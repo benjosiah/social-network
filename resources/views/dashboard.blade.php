@@ -24,6 +24,7 @@
     <div class='col-md-6 col-md-offset-3'>
         <header><h3>Posts</h3></header>
         @foreach($posts as $post)
+         
         <article class="post">
             <p> 
                 {!! nl2br($post->post)!!}
@@ -32,7 +33,7 @@
                 posted by {{$post->user->name}} on {{$post->created_at}}
             </div>
             <div class="intraction">
-                <a href="{{route('like',['post_id'=>$post->id])}}">Like(4)</a>|
+                <a href="{{route('like',['post_id'=>$post->id])}}">Like({{$post->like->count()}})</a>|
                 <a href="">Dislike</a>|
                 @if(Auth::user()==$post->user)
                 <a href="{{route('editpost',['post_id'=>$post->id])}}">Edit</a>|
@@ -40,6 +41,7 @@
                 @endif
             </div>
         </article>
+        
         @endforeach
     </div>
 </section>

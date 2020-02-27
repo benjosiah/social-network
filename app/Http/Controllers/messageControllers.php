@@ -14,10 +14,10 @@ class messageControllers extends Controller
 
         $user= User::where('id',$user_id)->first();
         $auser_id=Auth::user()->id;
-        $sentmessage=Message::where('auth_user_id',$auser_id)->get();
-        $receivemessage=Message::where('auth_user_id',$user_id)->get();
+        $messages=Message::orderBy('created_at', 'asc')->get();
         
-        return view('chat',['user'=>$user, 'sentmessage'=>$sentmessage,'receivemessage'=> $receivemessage]);
+        return view('chat',['user'=>$user, 
+        'messages'=>$messages]);
 
     }
     public function sendmessage(Request $request){

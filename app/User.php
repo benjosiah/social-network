@@ -8,9 +8,12 @@ class User extends Model implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;
     public function post(){
-        return $this->hasOne('App\Post');
+        return $this->hasMany('App\Post');
     }
     public function message(){
-        return $this->hasOne('App\Message');
+        return $this->hasMany('App\Message','auth_user_id');
+    }
+    public function like(){
+        return $this->hasMany('App\Like');
     }
 }

@@ -17,7 +17,7 @@
           <li>
             <a href="{{route('account')}}">
               @if(Storage::disk('local')->has(Auth::user()->name . '-' . Auth::user()->id. '.jpg'))
-                  <img src="{{route('image', ['filename'=> Auth::user()->name . '-' . Auth::user()->id. '.jpg'])}}" class="profile"  >
+              <img src="{{route('image', ['filename'=> Auth::user()->name . '-' . Auth::user()->id. '.jpg'])}}" class="profile"  >
               @endif
               {{Auth::user()->name}}
            </a>

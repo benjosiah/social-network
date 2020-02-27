@@ -5,44 +5,47 @@
 
 @section('content')
 @include('includes.message-block')
-    <div class="pop">
-        <center><div>
-            <center><div>
-                <h3>
-                <img src="{{route('image', ['filename'=> $user->name. '-' . $user->id. '.jpg'])}}" class="profile"  >
-                    {{$user->name}}
-                </h3>
-            </center></div>
-            @foreach($sentmessage as $sentmessage)
-            @if($user->id==$sentmessage->user_id)
-            <center><div class='sent-view'>
-               {{$sentmessage->message}}
-            </center></div><br>
-           @endif
-           @endforeach  
-           @foreach($receivemessage as $receivemessage)
-            @if($user->id==Auth::user()->id)
-            <center><div class='recieved-view'>
-               {{'  '.$receivemessage->message.' '}}
-            </center></div>
-           @endif
-           @endforeach
-           <center><div class='send-message' >
-                <form action="{{route('send')}}" method="post"> 
-                    <div class='form group'>
-                        <input type="hidden" name="_token" value="{{Session::token()}}">
-                    </div>
-                    <div class='form group'>
-                        <input type="hidden" name='user_id' id='user_id' class='send-message' value='{{$user->id}}' >
-                    </div> 
-                    <center><div class='form group'>
-                        <input type="text" name='message' id='message' class=''>
-                        <button type='submit'>send</button>
-                    </center></div>
-                </form>
-            </center> </div>
-</center> </div>
+
+    <div>
+        <div class="contact">
+            <div class='name'>
+                <h4>{{$user->name}}</h4>
+                <img src="{{route('image', ['filename'=> $user->name . '-' . $user->id. '.jpg'])}}" class="profile"  >
+            </div>
+        
+            <div class="lists">
+                @foreach($messages as $message)
+                    @if($message->auth_user_id==Auth::user()->id && $message->user_id==$user->id)
+                    <div class='sent'>
+                        <b>{{$message->user->name}}</b></br>
+                        {{$message->message}}
+                    </div><br>
+                    <br>
+                    <br>
+                    @elseif($message->user_id==Auth::user()->id && $message->auth_user_id==$user->id)
+                    <div class='recieve'>
+                        <b>{{$message->user->name}}</b></br>
+                        {{$message->message}}
+                    </div></br>
+                    <br>
+                    
+                    @endif
+
+                @endforeach
+               
+            </div>
+            <form action="{{route('send')}}" method="post">
+                <center> 
+                    <textarea name="message" id="" cols="30" rows="2" class='texe'></textarea>
+                    <input type="hidden" name="_token" value="{{Session::token()}}">
+                    <input type="hidden" name="user_id" id="" value="{{$user->id}}">
+                    <button type="submit" name='send'>Send</button>
+                </center>
+            </form>
+        </div>
+
     </div>
+
 
 
 @endsection
